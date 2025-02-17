@@ -1,21 +1,56 @@
 # php-network-check
 
+A simple PHP script to log incoming HTTP requests and send detailed reports via Telegram.
+
+## Features
+
+- Logs incoming HTTP requests (method, URL, headers, body, and file uploads).
+- Sends logs to Telegram for real-time notifications.
+- Handles CORS and OPTIONS requests gracefully.
+- Easy-to-use setup for local or production environments.
+
+![php-network-check](demo.jpg)
+
+## Requirements
+
+- PHP 7.4 or higher.
+- A Telegram bot and chat ID for receiving logs.
+
 ## Setup
 
-```
+### 1. Clone the repository
+
+To get started, clone the repository to your local machine:
+
+```sh
 git clone https://github.com/BaseMax/php-network-check
 cd php-network-check
 ```
 
-## Using
+### 2. Configure the bot and chat ID
+
+Before running the script, make sure to replace the following placeholders in network.php:
+
+- `$TELEGRAM_BOT_TOKEN`: Your Telegram bot's API token. You can create a bot and get the token from BotFather.
+- `$TELEGRAM_CHAT_ID`: The chat ID where you want to send the logs. This could be your personal chat ID or a group chat. You can find it by using a Telegram Bot API method.
+
+### 3. Start the PHP server
+
+You can start the PHP built-in server with the following command:
 
 ```sh
-$ php -S 0.0.0.0:9094
+php -S 0.0.0.0:9094
 ```
 
-![php-network-check](demo.jpg)
+The server will start and listen for requests on port 9094.
 
-### Network Report
+## Usage
+
+Once the server is up, any incoming HTTP request to this endpoint will trigger the logging function and send detailed logs to your specified Telegram chat.
+
+### Example Network Report
+
+Upon receiving a request, you will receive a message like this in your Telegram chat:
 
 ```
 📢 New Request Received 📢
@@ -57,5 +92,11 @@ $ php -S 0.0.0.0:9094
 
 📂 Files: "No files uploaded"
 ```
+
+### Customization Options
+
+- **CORS Headers:** By default, the script allows all origins, methods, and headers. You can restrict access by changing the CORS headers to suit your needs.
+- **Request Handling:** The script also handles OPTIONS requests for preflight checks, returning a 200 OK response.
+- **File Uploads:** If there are any files uploaded in the request, the script will log the name, type, and size of each file.
 
 Copyright 2025, Max Base
