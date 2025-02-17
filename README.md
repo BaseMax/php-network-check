@@ -1,6 +1,8 @@
 # php-network-check
 
-A simple PHP script to log incoming HTTP requests and send detailed reports via Telegram.
+> A simple PHP script to log incoming HTTP requests and send detailed reports via Telegram.
+
+A lightweight PHP script that logs incoming HTTP requests, capturing details like method, headers, body, and file uploads. It sends real-time reports to a Telegram chat, making it ideal for developers and admins to monitor traffic, debug APIs, and track server activity. Easy to set up and customize for both development and production environments.
 
 ## Features
 
